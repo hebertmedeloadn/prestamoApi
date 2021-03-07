@@ -8,10 +8,10 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '3'))
  	 disableConcurrentBuilds()
   }
-
+  
   tools {
     jdk 'JDK8_Centos'
-    gradle 'Gradle6.0.1_Centos'
+	gradle  = Gradle6.0.1_Centos
   }
 
   stages{
