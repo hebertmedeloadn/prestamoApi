@@ -1,19 +1,17 @@
 pipeline {
-  //Donde se va a ejecutar el Pipeline
+
   agent {
     label 'Slave_Induccion'
   }
 
-  //Opciones específicas de Pipeline dentro del Pipeline
   options {
-    	buildDiscarder(logRotator(numToKeepStr: '3'))
- 	disableConcurrentBuilds()
+    buildDiscarder(logRotator(numToKeepStr: '3'))
+ 	 disableConcurrentBuilds()
   }
 
-  //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
-    jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-    gradle 'Gradle6.0.1_Centos' //Preinstalada en la Configuración del Master
+    jdk 'JDK8_Centos'
+    gradle 'Gradle6.0.1_Centos'
   }
 
   stages{
@@ -35,41 +33,44 @@ pipeline {
       }
     }
 
+
+
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        dir("prestamo"){
-        	sh 'gradle --b ./build.gradle clean'
-      	}
+        sh 'gradle --b ./prestamo/build.gradle clean'
+
       }
     }
 
     stage('Unit Tests') {
-      steps{  
-       dir("prestamo"){
-        	sh 'gradle --b ./build.gradle clean'
-        	sh 'gradle --b ./build.gradle jacocoTestReport' 
-      	} 		
+      steps{
+        
+	echo "------------>Compile project<------------"
+        sh 'gradle --b ./prestamo/build.gradle compileJava'
+        
+	echo "------------>Unit Tests<------------"
+        sh 'gradle --b ./prestamo/build.gradle clean'
+	sh 'gradle --b ./prestamo/build.gradle test'
+        sh 'gradle --b ./prestamo/build.gradle jacocoTestReport' 
       }
     }
 
     stage('Static Code Analysis') {
       steps{
           echo '------------>Análisis de código estático<------------'
-          dir("prestamo"){
-        	withSonarQubeEnv('Sonar') {
-                 	sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties" 
+
+		withSonarQubeEnv('Sonar') {
+                  sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties" 
                 }
-	    	}  
-      	}        
+	    }     
+       
     }
 
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-        dir("prestamo"){
-	    	sh 'gradle --b ./build.gradle build -x test'
-      	}
+	    sh 'gradle --b ./prestamo/build.gradle build -x test'
       }
     }
   }

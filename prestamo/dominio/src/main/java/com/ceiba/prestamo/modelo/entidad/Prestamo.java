@@ -28,9 +28,9 @@ public class Prestamo {
 			+ VALOR_MINIMO_PRESTAMO;
 	private static final String SE_DEBE_INGRESAR_UN_VALOR_MENOR_IGUAL_QUINIENTOSMIL = "El valor del prestamo no debe ser mayor a "
 			+ VALOR_MAXIMO_PRESTAMO;
-	private static final String FONDOS_INSUFICIENTES = "Fondos insuficientes. Quedan fondos por un valor de ";
+	private static final String FONDOS_INSUFICIENTES = "Fondos insuficientes";
 	private static final String EL_CLIENTE_SOLO_PUEDE_TENER_TRES_PRESTAMOS = "Un mismo cliente solo puede tener tres prestamos";
-	private static final String CLIENTE_EXEDIO_EL_CUPO = "El cliente exedio el cupo permitido, tiene un cupo disponible de ";
+	private static final String CLIENTE_EXEDIO_EL_CUPO = "El cliente exedio el cupo permitido";
 
 	private Long id;
 	private Long documentoCliente;
@@ -56,9 +56,8 @@ public class Prestamo {
 
 	public void validarFondosDisponible(double valorPrestamosActivos) {
 		double montoTotal = valorPrestamosActivos + this.valor;
-		double fondosDisponibles = TOTAL_FONDOS - valorPrestamosActivos;
 		if (montoTotal > TOTAL_FONDOS) {
-			throw new ExcepcionValorInvalido(FONDOS_INSUFICIENTES + fondosDisponibles);
+			throw new ExcepcionValorInvalido(FONDOS_INSUFICIENTES);
 		}
 	}
 
@@ -72,7 +71,7 @@ public class Prestamo {
 		double cupoTotal = valorPrestamosCliente + this.valor;
 		double cupoDisponible = CUPO_CLIENTE - valorPrestamosCliente;
 		if (cupoTotal > CUPO_CLIENTE) {
-			throw new ExcepcionValorInvalido(CLIENTE_EXEDIO_EL_CUPO + cupoDisponible);
+			throw new ExcepcionValorInvalido(CLIENTE_EXEDIO_EL_CUPO);
 		}
 	}
 
