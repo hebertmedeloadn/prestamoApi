@@ -1,0 +1,1 @@
+SELECT count(1) from prestamos where documento_cliente = :documentoCliente  AND :fechaActual BETWEEN fecha_inicial AND fecha_final

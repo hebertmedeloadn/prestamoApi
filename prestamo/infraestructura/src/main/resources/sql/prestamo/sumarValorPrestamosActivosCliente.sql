@@ -1,0 +1,1 @@
+select IFNULL(SUM(valor), 0) from prestamos where documento_cliente = :documentoCliente and :fechaActual BETWEEN fecha_inicial AND fecha_final

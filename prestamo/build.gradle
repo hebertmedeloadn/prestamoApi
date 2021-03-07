@@ -10,7 +10,7 @@ allprojects {
 	
 	tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 	tasks.withType(Test) { systemProperty "file.encoding", "UTF-8" }
-
+	
 	project.ext.junit5 = ["org.junit.jupiter:junit-jupiter-api:5.3.1"]
 	project.ext.junit4 = ["junit:junit:4.12"]
 	project.ext.mockito = ['org.mockito:mockito-all:1.10.19']

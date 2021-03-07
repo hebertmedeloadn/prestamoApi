@@ -1,4 +1,4 @@
-CREATE TABLE prestamo.prestamos (
+CREATE TABLE prestamos (
   id INT NOT NULL auto_increment,
   documento_cliente INT NOT NULL,
   valor DOUBLE NOT NULL,
