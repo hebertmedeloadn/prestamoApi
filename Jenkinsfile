@@ -37,7 +37,7 @@ pipeline {
       steps{
         echo "------------>Version<------------"
         
-gradle -v
+      sh 'gradle -v'
       }
     }
 
