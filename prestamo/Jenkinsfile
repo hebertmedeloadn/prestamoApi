@@ -29,7 +29,7 @@ pipeline {
 			submoduleCfg: [],
 			userRemoteConfigs: [[
 				credentialsId: 'GitHub_hebertmedelo',
-				url:'https://github.com/hebertmedeloadn/prestamo.git'
+				url:'https://github.com/hebertmedeloadn/prestamoApi.git'
 			]]
 		])
       }
