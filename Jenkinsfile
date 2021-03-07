@@ -35,9 +35,8 @@ pipeline {
 
 	stage('-v') {
       steps{
-        echo "------------>Version<------------"
-        
-      sh 'gradle -v'
+        echo "------------>Version<------------"        
+        sh 'gradle -v'
       }
     }
 
