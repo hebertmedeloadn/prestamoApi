@@ -13,7 +13,7 @@ pipeline {
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
     jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-    gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
+    gradle 'Gradle6.0.1_Centos' //Preinstalada en la Configuración del Master
   }
 
   stages{
@@ -35,44 +35,41 @@ pipeline {
       }
     }
 
-
-
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        sh 'gradle --b ./prestamo/build.gradle clean'
-
+        dir("prestamo"){
+        	sh 'gradle --b ./build.gradle clean'
+      	}
       }
     }
 
     stage('Unit Tests') {
-      steps{
-        
-	echo "------------>Compile project<------------"
-        sh 'gradle --b ./prestamo/build.gradle compileJava'
-        
-	echo "------------>Unit Tests<------------"
-        sh 'gradle --b ./prestamo/build.gradle clean'
-	sh 'gradle --b ./prestamo/build.gradle test'
-        sh 'gradle --b ./prestamo/build.gradle jacocoTestReport' 
+      steps{  
+       dir("prestamo"){
+        	sh 'gradle --b ./build.gradle clean'
+        	sh 'gradle --b ./build.gradle jacocoTestReport' 
+      	} 		
       }
     }
 
     stage('Static Code Analysis') {
       steps{
           echo '------------>Análisis de código estático<------------'
-
-		withSonarQubeEnv('Sonar') {
-                  sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties" 
+          dir("prestamo"){
+        	withSonarQubeEnv('Sonar') {
+                 	sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties" 
                 }
-	    }     
-       
+	    	}  
+      	}        
     }
 
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-	    sh 'gradle --b ./prestamo/build.gradle build -x test'
+        dir("prestamo"){
+	    	sh 'gradle --b ./build.gradle build -x test'
+      	}
       }
     }
   }
