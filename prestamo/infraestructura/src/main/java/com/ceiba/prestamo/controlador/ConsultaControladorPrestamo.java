@@ -1,9 +1,17 @@
 package com.ceiba.prestamo.controlador;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.List;
 
 import com.ceiba.prestamo.consulta.ManejadorListarPrestamos;
 import com.ceiba.prestamo.modelo.dto.DtoPrestamo;
+
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +33,17 @@ public class ConsultaControladorPrestamo {
 	@GetMapping
 	@ApiOperation("Listar Prestamos")
 	public List<DtoPrestamo> listar() {
-		return this.manejadorListarPrestamos.ejecutar();
+		
+		try {
+			return this.manejadorListarPrestamos.ejecutar();
+		} catch (Exception e) {
+			System.out.println("prinstacktrace " + e.getStackTrace());
+			return null;
+		}
+		
+
+		
+		
 	}
 
 }
