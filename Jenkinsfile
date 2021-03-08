@@ -32,16 +32,14 @@ pipeline {
       }
     }
 	
-	stage('Permisos') {
-      steps{
-        echo "------------>Permisos<------------"
-        sh ("chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script")
-      }
-    }
+	
 
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
+		sh chmod +x prestamo/gradlew
+
+
         sh("(cd prestamo ./gradlew clean)") 
       }
     }
