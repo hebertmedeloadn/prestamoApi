@@ -35,7 +35,7 @@ pipeline {
 	stage('Permisos') {
       steps{
         echo "------------>Permisos<------------"
-        sh("chmod +x gradlew")
+        sh("chmod")
       }
     }
 
