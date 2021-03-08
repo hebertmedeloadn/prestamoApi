@@ -37,7 +37,7 @@ pipeline {
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-		sh (chmod +x prestamo/gradlew)
+		sh ("(chmod +x prestamo/gradlew)")
 
 
         sh("(cd prestamo ./gradlew clean)") 
