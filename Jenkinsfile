@@ -31,6 +31,13 @@ pipeline {
 		])
       }
     }
+	
+	stage('Permisos') {
+      steps{
+        echo "------------>Permisos<------------"
+        chmod +x gradlew
+      }
+    }
 
     stage('Clean') {
       steps{
