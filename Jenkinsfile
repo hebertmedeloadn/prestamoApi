@@ -11,7 +11,6 @@ pipeline {
   
   tools {
     jdk 'JDK8_Centos'
-    gradle 'Gradle6.4.1_Centos'
   }
 
   stages{
@@ -36,7 +35,7 @@ pipeline {
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        sh 'gradlew --b ./prestamo/build.gradle clean'
+        sh './gradlew --b ./prestamo/build.gradle clean'
       }
     }
 
@@ -44,12 +43,12 @@ pipeline {
       steps{
         
 	echo "------------>Compile project<------------"
-        sh 'gradlew --b ./prestamo/build.gradle compileJava'
+        sh './gradlew --b ./prestamo/build.gradle compileJava'
         
 	echo "------------>Unit Tests<------------"
-        sh 'gradle --b ./prestamo/build.gradle clean'
-	sh 'gradle --b ./prestamo/build.gradle test'
-        sh 'gradle --b ./prestamo/build.gradle jacocoTestReport' 
+        sh './gradlew --b ./prestamo/build.gradle clean'
+	sh './gradlew --b ./prestamo/build.gradle test'
+        sh './gradlew --b ./prestamo/build.gradle jacocoTestReport' 
       }
     }
 
