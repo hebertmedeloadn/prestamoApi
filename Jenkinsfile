@@ -35,7 +35,7 @@ pipeline {
 	stage('Permisos') {
       steps{
         echo "------------>Permisos<------------"
-        sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script"
+        sh ("chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script")
       }
     }
 
