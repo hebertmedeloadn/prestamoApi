@@ -3,8 +3,6 @@ package com.ceiba.prestamo.modelo.entidad;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
@@ -69,15 +67,14 @@ public class Prestamo {
 
 	public void validarCupoCliente(double valorPrestamosCliente) {
 		double cupoTotal = valorPrestamosCliente + this.valor;
-		double cupoDisponible = CUPO_CLIENTE - valorPrestamosCliente;
 		if (cupoTotal > CUPO_CLIENTE) {
 			throw new ExcepcionValorInvalido(CLIENTE_EXEDIO_EL_CUPO);
 		}
 	}
 
 	public void calcularValorApagar(double valor, CalcularIntereses intereses) {
-		this.porcentajeInteres = intereses.clacularPorcentajeInteres(valor);
-		this.valorInteres = intereses.clacularValorInteres(valor, porcentajeInteres);
+		this.porcentajeInteres = intereses.clacularPorcentajeInteres();
+		this.valorInteres = intereses.clacularValorInteres(porcentajeInteres);
 		this.valorApagar = valor + valorInteres;
 	}
 

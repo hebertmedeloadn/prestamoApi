@@ -8,7 +8,7 @@ public interface CalcularIntereses {
 	 * @param valor prestamo
 	 * @return porcetaje intereses
 	 */
-	public float clacularPorcentajeInteres(double valor);
+	public float clacularPorcentajeInteres();
 
 	/**
 	 * Calcula el valor de intereses
@@ -16,6 +16,6 @@ public interface CalcularIntereses {
 	 * @param valor prestamo
 	 * @return valor intereses
 	 */
-	public double clacularValorInteres(double valor, float porsentajeInteres);
+	public double clacularValorInteres(float porsentajeInteres);
 
 }

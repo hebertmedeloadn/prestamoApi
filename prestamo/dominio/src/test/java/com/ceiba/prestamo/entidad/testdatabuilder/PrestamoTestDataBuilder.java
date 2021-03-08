@@ -1,9 +1,7 @@
-package com.ceiba.prestamo.servicio;
+package com.ceiba.prestamo.entidad.testdatabuilder;
 
 import com.ceiba.prestamo.modelo.entidad.Prestamo;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PrestamoTestDataBuilder {

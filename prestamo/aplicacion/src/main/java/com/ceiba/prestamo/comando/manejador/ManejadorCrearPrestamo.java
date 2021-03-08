@@ -25,7 +25,7 @@ public class ManejadorCrearPrestamo implements ManejadorComandoRespuesta<Comando
 
 	public ComandoRespuesta<Long> ejecutar(ComandoPrestamo comandoPrestamo) {
 		Prestamo prestamo = this.fabricaPrestamo.crear(comandoPrestamo);
-		CalcularIntereses calcularInteres = new CalcularInteresesImpl();
+		CalcularIntereses calcularInteres = new CalcularInteresesImpl(prestamo.getValor());
 		CalcularFechaFinal calcularFechaFinal = new CalcularFechaFinal(prestamo.getFechaInicial());
 		return new ComandoRespuesta<>(this.servicioCrearPrestamo.ejecutar(prestamo, calcularInteres, calcularFechaFinal));
 	}

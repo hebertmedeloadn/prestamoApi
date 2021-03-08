@@ -27,19 +27,11 @@ pipeline {
 			submoduleCfg: [],
 			userRemoteConfigs: [[
 				credentialsId: 'GitHub_hebertmedelo',
-				url:'https://github.com/hebertmedeloadn/prestamoApi.git'
+				url:'https://github.com/hebertmedeloadn/prestamoApi'
 			]]
 		])
       }
     }
-
-	stage('-v') {
-      steps{
-        echo "------------>Version<------------"        
-        sh 'gradle -v'
-      }
-    }
-
 
     stage('Clean') {
       steps{
