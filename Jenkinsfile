@@ -35,7 +35,7 @@ pipeline {
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        sh './gradlew prestamo/build.gradle clean'
+        sh './gradlew cd prestamo/build.gradle clean'
       }
     }
 
