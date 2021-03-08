@@ -28,8 +28,8 @@ public class DaoPrestamoMysql implements DaoPrestamo {
 
 	@SqlStatement(namespace = "prestamo", value = "contarCreditosActivosPorCliente")
 	private static String sqlContarCreditosActivosPorCliente;
-
-	@SqlStatement(namespace = "prestamo", value = "sumarvalorPrestamosActivosCliente")
+	
+	@SqlStatement(namespace = "prestamo", value = "sumarValorPrestamosActivosCliente")
 	private static String sqlSumarValorPrestamosCliente;
 
 	@Override
