@@ -49,7 +49,7 @@ pipeline {
         
 		echo "------------>Unit Tests<------------"
         sh ("(cd prestamo && ./gradlew clean)")
-		sh ("(cd prestamo && ./gradlew test)") sh './gradlew --b ./prestamo/build.gradle test'
+		sh ("(cd prestamo && ./gradlew test)")
         sh ("(cd prestamo && ./gradlew jacocoTestReport)")
       }
     }
