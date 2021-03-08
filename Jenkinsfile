@@ -32,12 +32,17 @@ pipeline {
       }
     }
 	
-	
+	stage('Permisos') {
+      steps{
+        echo "------------>Permisos<------------"
+        sh("chmod +x gradlew")
+      }
+    }
 
     stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        sh("(cd prestamo && chmod +x gradlew &&  ./gradlew clean)") 
+        sh("(cd prestamo ./gradlew clean)") 
       }
     }
 
