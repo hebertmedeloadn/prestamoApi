@@ -68,7 +68,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-	    sh './gradlew --b ./prestamo/build.gradle build -x test'
+		sh ("(cd prestamo && ./gradlew build -x test)")
       }
     }
   }
