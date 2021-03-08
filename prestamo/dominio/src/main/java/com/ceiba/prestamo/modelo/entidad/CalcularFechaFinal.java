@@ -10,7 +10,7 @@ public class CalcularFechaFinal {
 	private static final int PLAZO_EN_MESES = 1;
 	private static final int DIA_ADICIONAL = 1;
 
-	private final Date fechaInicial;
+	private Date fechaInicial;
 
 	public CalcularFechaFinal(Date fechaInicial) {
 		this.fechaInicial = fechaInicial;

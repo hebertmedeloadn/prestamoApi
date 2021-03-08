@@ -16,11 +16,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.usuario.controlador.ConsultaControladorUsuario;
+import com.ceiba.prestamo.controlador.ConsultaControladorPrestamo;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
-@WebMvcTest(ConsultaControladorUsuario.class)
+@WebMvcTest(ConsultaControladorPrestamo.class)
 public class ConsultaControladorPrestamoTest {
 
 	@Autowired
@@ -31,12 +31,8 @@ public class ConsultaControladorPrestamoTest {
 		// arrange
 
 		// act - assert
-		try {
-			mocMvc.perform(get("/prestamos").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-					.andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].documentoCliente", is(9999)));
-		} catch (Exception e) {
-			System.out.println("prinstacktrace " + e.getStackTrace());
-		}
+		mocMvc.perform(get("/prestamos").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].documentoCliente", is(9999)));
 
 	}
 }
