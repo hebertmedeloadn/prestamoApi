@@ -40,7 +40,7 @@ pipeline {
 		sh ("(chmod +x prestamo/gradlew)")
 
 
-        sh("(cd prestamo ./gradlew clean)") 
+        sh("(cd prestamo/ ./gradlew clean)") 
       }
     }
 
