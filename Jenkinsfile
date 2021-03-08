@@ -34,11 +34,12 @@ pipeline {
 	
 	
 
-    stage('Clean') {
+    stage('Clean And Build') {
       steps{
         echo "------------>Clean<------------"
 		sh ("(chmod +x prestamo/gradlew)")
         sh ("(cd prestamo && ./gradlew clean)") 
+		sh ("(cd prestamo && ./gradlew build)") 
       }
     }
 
@@ -48,7 +49,6 @@ pipeline {
         sh ("(cd prestamo && ./gradlew compileJava)")
         
 		echo "------------>Unit Tests<------------"
-        sh ("(cd prestamo && ./gradlew clean)")
 		sh ("(cd prestamo && ./gradlew test)")
         sh ("(cd prestamo && ./gradlew jacocoTestReport)")
       }
