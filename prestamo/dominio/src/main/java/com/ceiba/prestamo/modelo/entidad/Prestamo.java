@@ -49,7 +49,7 @@ public class Prestamo {
 
 		this.documentoCliente = documentoCliente;
 		this.valor = valor;
-		this.fechaInicial = fechaInicial;
+		this.fechaInicial = (Date) fechaInicial.clone();
 	}
 
 	public void validarFondosDisponible(double valorPrestamosActivos) {
