@@ -39,8 +39,7 @@ public class Prestamo {
 	private Date fechaInicial;
 	private Date fechaFinal;
 
-	public Prestamo(Long id, Long documentoCliente, double valor, float porcentajeInteres, double valorInteres,
-			double valorApagar, Date fechaInicial, Date fechaFinal) {
+	public Prestamo(Long documentoCliente, double valor, Date fechaInicial) {
 
 		validarObligatorio(documentoCliente, SE_DEBE_INGRESAR_EL_DOCUEMTO_CLIENTE);
 		validarMenor((long) VALOR_MINIMO_PRESTAMO, (long) valor, SE_DEBE_INGRESAR_UN_VALOR_MAYOR_IGUAL_CINCUENTAMIL);
@@ -48,14 +47,9 @@ public class Prestamo {
 		validarObligatorio(valorApagar, SE_DEBE_INGRESAR_EL_VALOR_A_PAGAR);
 		validarObligatorio(fechaInicial.clone(), SE_DEBE_INGRESAR_FECHA_INICIAL);
 
-		this.id = id;
 		this.documentoCliente = documentoCliente;
 		this.valor = valor;
-		this.porcentajeInteres = porcentajeInteres;
-		this.valorInteres = valorInteres;
-		this.valorApagar = valorApagar;
 		this.fechaInicial = (Date) fechaInicial.clone();
-		this.fechaFinal = fechaFinal;
 	}
 
 	public void validarFondosDisponible(double valorPrestamosActivos) {

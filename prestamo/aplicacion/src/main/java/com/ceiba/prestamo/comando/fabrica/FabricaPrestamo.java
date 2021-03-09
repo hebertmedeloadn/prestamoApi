@@ -9,9 +9,8 @@ import com.ceiba.prestamo.modelo.entidad.Prestamo;
 public class FabricaPrestamo {
 
 	public Prestamo crear(ComandoPrestamo comandoPrestamo) {
-		return new Prestamo(comandoPrestamo.getId(), comandoPrestamo.getDocumentoCliente(), comandoPrestamo.getValor(),
-				comandoPrestamo.getPorcentajeInteres(), comandoPrestamo.getValorInteres(),
-				comandoPrestamo.getValorApagar(), comandoPrestamo.getFechaInicial(), comandoPrestamo.getFechaFinal());
+		return new Prestamo(comandoPrestamo.getDocumentoCliente(), comandoPrestamo.getValor(),
+				comandoPrestamo.getFechaInicial());
 	}
 
 }
