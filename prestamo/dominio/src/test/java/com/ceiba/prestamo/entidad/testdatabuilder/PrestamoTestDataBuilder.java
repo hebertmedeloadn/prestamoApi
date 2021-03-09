@@ -2,6 +2,7 @@ package com.ceiba.prestamo.entidad.testdatabuilder;
 
 import com.ceiba.prestamo.modelo.entidad.Prestamo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PrestamoTestDataBuilder {

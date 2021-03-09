@@ -18,6 +18,7 @@ public class CalcularFechaFinal {
 
 	public Date calcularFechaFinalPrestamo() {
 		LocalDateTime fecha = convertirDateALocalDateTime(fechaInicial);
+
 		fecha = fecha.plusMonths(PLAZO_EN_MESES);
 
 		if (esDomingo(fecha)) {
@@ -38,5 +39,4 @@ public class CalcularFechaFinal {
 	public Date convertirLocalDateTimeADate(LocalDateTime date) {
 		return java.sql.Timestamp.valueOf(date);
 	}
-
 }

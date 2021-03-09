@@ -9,7 +9,7 @@ public class CalcularFechaTestDataBuilder {
 	private Date fechaInicial;
 
 	public CalcularFechaTestDataBuilder() {
-		fechaInicial = new Date();
+		fechaInicial = new Date(); 
 	}	
 	
 	public CalcularFechaTestDataBuilder conFechaInicial(Date fechaInicial) {
@@ -18,7 +18,7 @@ public class CalcularFechaTestDataBuilder {
 	}
 
 	public CalcularFechaFinal build() {
-		return new CalcularFechaFinal(fechaInicial);
+		return new CalcularFechaFinal(fechaInicial); 
 	}
 
 	

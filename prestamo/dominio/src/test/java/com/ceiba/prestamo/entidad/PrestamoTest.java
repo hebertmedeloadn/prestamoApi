@@ -1,5 +1,6 @@
 package com.ceiba.prestamo.entidad;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.junit.Assert;
@@ -43,7 +44,7 @@ public class PrestamoTest {
 	}
 
 	@Test
-	public void validarCupoCliente() {
+	public void validarCupoCliente() { 
 		// arrange
 		double valorPrestamo = 200000;
 		Prestamo prestamo = new PrestamoTestDataBuilder().conValor(valorPrestamo).build();
@@ -79,7 +80,7 @@ public class PrestamoTest {
 		
 		Prestamo prestamo = new PrestamoTestDataBuilder().conFechaInicial(fechaPrestamo).build();
 		CalcularFechaFinal calcularFechaFinal = Mockito.mock(CalcularFechaFinal.class);
-		Mockito.when(calcularFechaFinal.calcularFechaFinalPrestamo()).thenReturn(new Date(121, 2, 7));	
+		Mockito.when(calcularFechaFinal.calcularFechaFinalPrestamo()).thenReturn(new Date());	
 
 		// act
 		prestamo.calcularFechaFinalPrestamo(calcularFechaFinal);

@@ -1,6 +1,5 @@
 package com.ceiba.prestamo.controlador;
 
-
 import java.util.List;
 
 import com.ceiba.prestamo.consulta.ManejadorListarPrestamos;
@@ -27,17 +26,6 @@ public class ConsultaControladorPrestamo {
 	@GetMapping
 	@ApiOperation("Listar Prestamos")
 	public List<DtoPrestamo> listar() {
-		
-		try {
-			return this.manejadorListarPrestamos.ejecutar();
-		} catch (Exception e) {
-			System.out.println("prinstacktrace " + e.getStackTrace());
-			return null;
-		}
-		
-
-		
-		
+		return this.manejadorListarPrestamos.ejecutar();
 	}
-
 }
