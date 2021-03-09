@@ -13,7 +13,7 @@ public class CalcularFechaFinal {
 	private Date fechaInicial;
 
 	public CalcularFechaFinal(Date fechaInicial) {
-		this.fechaInicial = fechaInicial;
+		this.fechaInicial = (Date) fechaInicial.clone();
 	}
 
 	public Date calcularFechaFinalPrestamo() {

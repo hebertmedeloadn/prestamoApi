@@ -45,7 +45,7 @@ public class Prestamo {
 		validarMenor((long) VALOR_MINIMO_PRESTAMO, (long) valor, SE_DEBE_INGRESAR_UN_VALOR_MAYOR_IGUAL_CINCUENTAMIL);
 		validarMenor((long) valor, (long) VALOR_MAXIMO_PRESTAMO, SE_DEBE_INGRESAR_UN_VALOR_MENOR_IGUAL_QUINIENTOSMIL);
 		validarObligatorio(valorApagar, SE_DEBE_INGRESAR_EL_VALOR_A_PAGAR);
-		validarObligatorio(fechaInicial, SE_DEBE_INGRESAR_FECHA_INICIAL);
+		validarObligatorio(fechaInicial.clone(), SE_DEBE_INGRESAR_FECHA_INICIAL);
 
 		this.documentoCliente = documentoCliente;
 		this.valor = valor;
@@ -81,7 +81,5 @@ public class Prestamo {
 	public void calcularFechaFinalPrestamo(CalcularFechaFinal calcularFechaFinal) {
 		this.fechaFinal = calcularFechaFinal.calcularFechaFinalPrestamo();
 	}
-
-	
 
 }
