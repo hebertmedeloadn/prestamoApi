@@ -13,7 +13,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ComandoPrestamo {
 
+	private Long id;
 	private Long documentoCliente;
 	private double valor;
+	private float porcentajeInteres;
+	private double valorInteres;
+	private double valorApagar;
 	private Date fechaInicial;
+	private Date fechaFinal;
 }

@@ -63,6 +63,7 @@ public class PrestamoTestDataBuilder {
 	}
 
 	public Prestamo build() {
-		return new Prestamo(documentoCliente, valor, fechaInicial);
+		return new Prestamo(id, documentoCliente, valor, porcentajeInteres, valorInteres, valorApagar, fechaInicial,
+				fechaFinal);
 	}
 }
