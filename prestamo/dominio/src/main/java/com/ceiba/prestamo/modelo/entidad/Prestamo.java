@@ -3,7 +3,6 @@ package com.ceiba.prestamo.modelo.entidad;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
