@@ -30,7 +30,7 @@ public class Prestamo {
 	private static final String EL_CLIENTE_SOLO_PUEDE_TENER_TRES_PRESTAMOS = "Un mismo cliente solo puede tener tres prestamos";
 	private static final String CLIENTE_EXEDIO_EL_CUPO = "El cliente exedio el cupo permitido";
 
-	private Long id;
+	//private Long id;
 	private Long documentoCliente;
 	private double valor;
 	private float porcentajeInteres;
