@@ -37,7 +37,7 @@ public class DaoPrestamoMysql implements DaoPrestamo {
 	@Override
 	public List<DtoPrestamo> listar(Date fecha) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
-		paramSource.addValue(FECHA_ACTUAL, new Date());
+		paramSource.addValue(FECHA_ACTUAL, fecha);
 		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, paramSource,
 				new MapeoPrestamo());
 	}
@@ -64,7 +64,7 @@ public class DaoPrestamoMysql implements DaoPrestamo {
 	public double valorPrestamosCliente(Long documentoCliente, Date fechaActual) {
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("documentoCliente", documentoCliente);
-		paramSource.addValue("FECHA_ACTUAL", fechaActual);
+		paramSource.addValue(FECHA_ACTUAL, fechaActual);
 		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
 				.queryForObject(sqlSumarValorPrestamosCliente, paramSource, Double.class);
 	}
