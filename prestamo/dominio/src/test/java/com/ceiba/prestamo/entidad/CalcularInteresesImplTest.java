@@ -8,10 +8,25 @@ import com.ceiba.prestamo.modelo.entidad.CalcularInteresesImpl;
 
 public class CalcularInteresesImplTest {
 
-	private static final float PORCENTAJE_MAXIMO_INTERES = 7;
+	private static final float PORCENTAJE_MINIMO_INTERES = 7;
+	private static final float PORCENTAJE_MAXIMO_INTERES = 10;
 
 	@Test
-	public void clacularPorcentajeInteres() {
+	public void clacularPorcentajeInteresMinimo() {
+		// arrange
+		double valorPrestamo = 300000;
+		CalcularInteresesImpl calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
+				.build();
+		float porcentejeInteres = calcularIntereses.clacularPorcentajeInteres();
+		// act
+		float porcentajeMinimoInteres = PORCENTAJE_MINIMO_INTERES;
+		// assert
+		Assert.assertEquals(porcentejeInteres, porcentajeMinimoInteres, 0.0);
+
+	}
+
+	@Test
+	public void clacularPorcentajeMaximo() {
 		// arrange
 		double valorPrestamo = 100000;
 		CalcularInteresesImpl calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
@@ -27,13 +42,13 @@ public class CalcularInteresesImplTest {
 	@Test
 	public void clacularValorInteres() {
 		// arrange
-		double valorPrestamo = 100000;
+		double valorPrestamo = 300000;
 		CalcularInteresesImpl calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
 				.build();
 		double valorInteres = calcularIntereses.clacularValorInteres(PORCENTAJE_MAXIMO_INTERES);
 		// act
-		double valorComparar = 7000;
+		double valorComparar = 30000;
 		// assert
 		Assert.assertEquals(valorInteres, valorComparar, 0.0);
-	}	
+	}
 }

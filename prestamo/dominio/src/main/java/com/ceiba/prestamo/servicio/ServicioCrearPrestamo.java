@@ -30,12 +30,13 @@ public class ServicioCrearPrestamo {
 		prestamo.validarCantidadPrestamosCliente(cantidadPrestamosCliente);
 
 		double valorPrestamosCliente = this.daoPrestamo.valorPrestamosCliente(prestamo.getDocumentoCliente(),
-				fechaActual);
+				fechaActual);		
 		prestamo.validarCupoCliente(valorPrestamosCliente);
 		
 		prestamo.calcularValorApagar(prestamo.getValor(), calcularIntereses);
 
 		prestamo.calcularFechaFinalPrestamo(calcularFechaFinal);
+		
 		return this.repositorioPrestamo.crear(prestamo);
 	}
 	

@@ -15,12 +15,12 @@ public class CalcularFechaFinalTest {
 	@Test
 	public void esDomingo() {
 		// arrange
-		LocalDateTime esDomigo = LocalDateTime.of(2020, 3, 7, 0, 0);
+		LocalDateTime fechaInicial = LocalDateTime.of(2020, 3, 7, 0, 0);
 		CalcularFechaFinal calcularFechaFinal = new CalcularFechaTestDataBuilder().build();
 		// act - assert
-		Assert.assertTrue(calcularFechaFinal.esDomingo(esDomigo));
+		Assert.assertTrue(calcularFechaFinal.esDomingo(fechaInicial));
 	}
- 
+
 	@Test
 	public void noEsDomigo() {
 		// arrange
@@ -44,7 +44,7 @@ public class CalcularFechaFinalTest {
 		Assert.assertEquals(fechaComparar, fechaFinal);
 
 	}
-	
+
 	@Test
 	public void calcularFechaFinalPrestamoConDomigo() throws ParseException {
 		// arrange

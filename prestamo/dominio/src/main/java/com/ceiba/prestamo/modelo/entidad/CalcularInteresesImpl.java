@@ -2,9 +2,9 @@ package com.ceiba.prestamo.modelo.entidad;
 
 public class CalcularInteresesImpl implements CalcularIntereses {
 
-	private static final double VALOR_BASE_CALCULAR_INTERES = 500000;
-	private static final float PORCENTAJE_MAXIMO_INTERES = 7;
-	private static final float PORCENTAJE_MINIMO_INTERES = 10;
+	private static final double VALOR_BASE_CALCULAR_INTERES = 250000;
+	private static final float PORCENTAJE_MAXIMO_INTERES = 10;
+	private static final float PORCENTAJE_MINIMO_INTERES = 7;
 
 	private double valor;
 
