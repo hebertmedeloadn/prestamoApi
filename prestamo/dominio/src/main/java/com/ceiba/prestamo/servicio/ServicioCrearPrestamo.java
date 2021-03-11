@@ -12,15 +12,19 @@ public class ServicioCrearPrestamo {
 
 	private final RespositorioPrestamo repositorioPrestamo;
 	private final DaoPrestamo daoPrestamo;
-	private final Date fechaActual = new Date();
-	
 
 	public ServicioCrearPrestamo(RespositorioPrestamo repositorioUsuario, DaoPrestamo daoPrestamo) {
 		this.repositorioPrestamo = repositorioUsuario;
 		this.daoPrestamo = daoPrestamo;
+
 	}
 
-	public Long ejecutar(Prestamo prestamo, CalcularIntereses calcularIntereses, CalcularFechaFinal calcularFechaFinal) {
+	public Long ejecutar(Prestamo prestamo) {
+
+		Date fechaActual = new Date();
+
+		CalcularIntereses calcularIntereses = new CalcularIntereses(prestamo.getValor());
+		CalcularFechaFinal calcularFechaFinal = new CalcularFechaFinal(prestamo.getFechaInicial());
 
 		double valorPrestamosActivos = this.daoPrestamo.valorToltalPrestamosActivos(fechaActual);
 		prestamo.validarFondosDisponible(valorPrestamosActivos);
@@ -30,16 +34,14 @@ public class ServicioCrearPrestamo {
 		prestamo.validarCantidadPrestamosCliente(cantidadPrestamosCliente);
 
 		double valorPrestamosCliente = this.daoPrestamo.valorPrestamosCliente(prestamo.getDocumentoCliente(),
-				fechaActual);		
+				fechaActual);
 		prestamo.validarCupoCliente(valorPrestamosCliente);
-		
+
 		prestamo.calcularValorApagar(prestamo.getValor(), calcularIntereses);
 
 		prestamo.calcularFechaFinalPrestamo(calcularFechaFinal);
-		
+
 		return this.repositorioPrestamo.crear(prestamo);
 	}
-	
-
 
 }

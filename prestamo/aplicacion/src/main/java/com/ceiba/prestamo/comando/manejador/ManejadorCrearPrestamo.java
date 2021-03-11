@@ -6,9 +6,6 @@ import com.ceiba.ComandoRespuesta;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
 import com.ceiba.prestamo.comando.ComandoPrestamo;
 import com.ceiba.prestamo.comando.fabrica.FabricaPrestamo;
-import com.ceiba.prestamo.modelo.entidad.CalcularFechaFinal;
-import com.ceiba.prestamo.modelo.entidad.CalcularIntereses;
-import com.ceiba.prestamo.modelo.entidad.CalcularInteresesImpl;
 import com.ceiba.prestamo.modelo.entidad.Prestamo;
 import com.ceiba.prestamo.servicio.ServicioCrearPrestamo;
 
@@ -24,12 +21,10 @@ public class ManejadorCrearPrestamo implements ManejadorComandoRespuesta<Comando
 	}
 
 	public ComandoRespuesta<Long> ejecutar(ComandoPrestamo comandoPrestamo) {
-		
+
 		Prestamo prestamo = this.fabricaPrestamo.crear(comandoPrestamo);
-		CalcularIntereses calcularInteres = new CalcularInteresesImpl(prestamo.getValor());
-		CalcularFechaFinal calcularFechaFinal = new CalcularFechaFinal(prestamo.getFechaInicial());
-		
-		return new ComandoRespuesta<>(this.servicioCrearPrestamo.ejecutar(prestamo, calcularInteres, calcularFechaFinal));
+
+		return new ComandoRespuesta<>(this.servicioCrearPrestamo.ejecutar(prestamo));
 	}
 
 }

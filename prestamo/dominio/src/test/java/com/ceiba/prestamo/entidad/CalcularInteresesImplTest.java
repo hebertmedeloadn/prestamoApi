@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.ceiba.prestamo.entidad.testdatabuilder.CalcularInteresTestDataBuilder;
-import com.ceiba.prestamo.modelo.entidad.CalcularInteresesImpl;
+import com.ceiba.prestamo.modelo.entidad.CalcularIntereses;
 
 public class CalcularInteresesImplTest {
 
@@ -15,9 +15,9 @@ public class CalcularInteresesImplTest {
 	public void clacularPorcentajeInteresMinimo() {
 		// arrange
 		double valorPrestamo = 300000;
-		CalcularInteresesImpl calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
+		CalcularIntereses calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
 				.build();
-		float porcentejeInteres = calcularIntereses.clacularPorcentajeInteres();
+		float porcentejeInteres = calcularIntereses.clacularPorcentaje();
 		// act
 		float porcentajeMinimoInteres = PORCENTAJE_MINIMO_INTERES;
 		// assert
@@ -29,9 +29,9 @@ public class CalcularInteresesImplTest {
 	public void clacularPorcentajeMaximo() {
 		// arrange
 		double valorPrestamo = 100000;
-		CalcularInteresesImpl calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
+		CalcularIntereses calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
 				.build();
-		float porcentejeInteres = calcularIntereses.clacularPorcentajeInteres();
+		float porcentejeInteres = calcularIntereses.clacularPorcentaje();
 		// act
 		float porcentajeMinimoInteres = PORCENTAJE_MAXIMO_INTERES;
 		// assert
@@ -43,9 +43,9 @@ public class CalcularInteresesImplTest {
 	public void clacularValorInteres() {
 		// arrange
 		double valorPrestamo = 300000;
-		CalcularInteresesImpl calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
+		CalcularIntereses calcularIntereses = new CalcularInteresTestDataBuilder().conValorPrestamo(valorPrestamo)
 				.build();
-		double valorInteres = calcularIntereses.clacularValorInteres(PORCENTAJE_MAXIMO_INTERES);
+		double valorInteres = calcularIntereses.calcularValor(PORCENTAJE_MAXIMO_INTERES);
 		// act
 		double valorComparar = 30000;
 		// assert

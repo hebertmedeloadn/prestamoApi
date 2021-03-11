@@ -42,8 +42,8 @@ public class Prestamo {
 	public Prestamo(Long documentoCliente, double valor, Date fechaInicial) {
 
 		validarObligatorio(documentoCliente, SE_DEBE_INGRESAR_EL_DOCUEMTO_CLIENTE);
-		validarMenor((long) VALOR_MINIMO_PRESTAMO, (long) valor, SE_DEBE_INGRESAR_UN_VALOR_MAYOR_IGUAL_CINCUENTAMIL);
-		validarMenor((long) valor, (long) VALOR_MAXIMO_PRESTAMO, SE_DEBE_INGRESAR_UN_VALOR_MENOR_IGUAL_QUINIENTOSMIL);
+		validarMenor(VALOR_MINIMO_PRESTAMO, valor, SE_DEBE_INGRESAR_UN_VALOR_MAYOR_IGUAL_CINCUENTAMIL);
+		validarMenor(valor, VALOR_MAXIMO_PRESTAMO, SE_DEBE_INGRESAR_UN_VALOR_MENOR_IGUAL_QUINIENTOSMIL);
 		validarObligatorio(valorApagar, SE_DEBE_INGRESAR_EL_VALOR_A_PAGAR);
 		validarObligatorio(fechaInicial.clone(), SE_DEBE_INGRESAR_FECHA_INICIAL);
 
@@ -73,8 +73,8 @@ public class Prestamo {
 	}
 
 	public void calcularValorApagar(double valor, CalcularIntereses intereses) {
-		this.porcentajeInteres = intereses.clacularPorcentajeInteres();
-		this.valorInteres = intereses.clacularValorInteres(porcentajeInteres);
+		this.porcentajeInteres = intereses.clacularPorcentaje();
+		this.valorInteres = intereses.calcularValor(porcentajeInteres);
 		this.valorApagar = valor + valorInteres;
 	}
 

@@ -1,6 +1,6 @@
 package com.ceiba.prestamo.entidad.testdatabuilder;
 
-import com.ceiba.prestamo.modelo.entidad.CalcularInteresesImpl;
+import com.ceiba.prestamo.modelo.entidad.CalcularIntereses;
 
 public class CalcularInteresTestDataBuilder {
 
@@ -15,8 +15,8 @@ public class CalcularInteresTestDataBuilder {
 		return this;
 	}
 
-	public CalcularInteresesImpl build() {
-		return new CalcularInteresesImpl(valorPrestamo);
+	public CalcularIntereses build() {
+		return new CalcularIntereses(valorPrestamo);
 	}
 
 }

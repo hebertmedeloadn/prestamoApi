@@ -32,7 +32,7 @@ public class ConsultaControladorPrestamoTest {
 
 		// act - assert
 		mocMvc.perform(get("/prestamos").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].documentoCliente", is(9999)));
+				.andExpect(jsonPath("$", hasSize(2))).andExpect(jsonPath("$[0].documentoCliente", is(9999)));
 
 	}
 }
